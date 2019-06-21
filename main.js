@@ -1,48 +1,44 @@
-let gridX = 1;
-let gridY = 1;
-let stringGrid = "r" + gridX + "c" + gridY;
+let coordinates = {r: 1, c: 1};
+let stringGrid = "r" + coordinates.r + "c" + coordinates.c;
 const pikaURL = '<img src="pika.gif">';
-
-// $(document).ready(function() {
-    
 
 document.onkeydown = function(e){
     switch(e.key){
         case "ArrowUp":
-            if(gridX > 1){
+            if(coordinates.r > 1){
                 removePika();
-                gridX--;
-                stringGrid = updateLocation(gridX, gridY);
+                coordinates.r--;
+                stringGrid = updateLocation();
                 updateGrid();
             }
-            console.log("up " + gridX + ' ' + gridY);
+            console.log("up " + coordinates.r + ' ' + coordinates.c);
             break;
         case "ArrowDown":
-            if(gridX < 10){
+            if(coordinates.r < 10){
                 removePika();
-                gridX++;
-                stringGrid = updateLocation(gridX, gridY);
+                coordinates.r++;
+                stringGrid = updateLocation();
                 updateGrid();
             }
-            console.log("Down " + gridX + ' ' + gridY);
+            console.log("Down " + coordinates.r + ' ' + coordinates.c);
             break;
         case "ArrowRight":
-            if(gridY < 10){
+            if(coordinates.c < 10){
                 removePika();
-                gridY++;
-                stringGrid = updateLocation(gridX, gridY);
+                coordinates.c++;
+                stringGrid = updateLocation();
                 updateGrid();
             }
-            console.log("Right " + gridX + ' ' + gridY);
+            console.log("Right " + coordinates.r + ' ' + coordinates.c);
             break;
         case "ArrowLeft":
-            if(gridY > 1){
+            if(coordinates.c > 1){
                 removePika();
-                gridY--;
-                stringGrid = updateLocation(gridX, gridY);
+                coordinates.c--;
+                stringGrid = updateLocation();
                 updateGrid();
             }
-            console.log("Left " + gridX + ' ' + gridY);
+            console.log("Left " + coordinates.r + ' ' + coordinates.c);
             break;
     }
 
@@ -51,8 +47,8 @@ document.onkeydown = function(e){
 }
 
 
-function updateLocation(gridX, gridY){
-    return "r" + gridX + "c" + gridY;
+function updateLocation(){
+    return "r" + coordinates.r + "c" + coordinates.c;
 }
 
 function updateGrid(){
@@ -62,10 +58,3 @@ function updateGrid(){
 function removePika(){
     $("." + stringGrid).html("");
 }
-
-
-
-
-
-
-// });
